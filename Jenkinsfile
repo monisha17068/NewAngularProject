@@ -25,7 +25,16 @@ sh '$SCANNER_HOME/opt/sonar-scanner/bin/sonar-scanner -Dsonar.projectKey=angular
                sh 'ng build --prod'
                
             }
-        }    
+        }
+      stage('docker') {
+            steps {
+                
+               sh 'docker build -t angularemp:1.1 .'
+               sh 'docker run -d -p 8084:80 angularemp:1.1'
+       
+}
+}
+}
   }
    
     }
