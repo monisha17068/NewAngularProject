@@ -18,7 +18,14 @@ pipeline {
 sh '$SCANNER_HOME/opt/sonar-scanner/bin/sonar-scanner -Dsonar.projectKey=angular_scanner -Dsonar.sources=. '
 }
 }
-        
+    stage('build') {
+            steps {
+                
+               sh 'npm install'
+               sh 'ng build --prod'
+               
+            }
+        }    
   }
    
     }
